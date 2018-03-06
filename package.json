@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode ${NODE_ENV:-development}"
+    "build": "webpack --mode ${NODE_ENV:-development}",
+    "start": "babel-node server/index.jsx"
   },
   "author": "Jiangge Zhang",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
@@ -23,7 +25,12 @@
     "webpack-cli": "^2.0.10"
   },
   "dependencies": {
+    "express": "^4.16.2",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2"
   }
 }

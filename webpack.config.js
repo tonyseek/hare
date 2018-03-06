@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name]-[hash:6].js',
-    publicPath: '/',
+    publicPath: '/static',
   },
   resolve: {
     modules: [
@@ -29,8 +29,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './public/index.html',
+      filename: 'index.html.mustache',
+      template: './public/index.html.mustache',
       inject: 'body',
     }),
   ],
