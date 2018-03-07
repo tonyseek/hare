@@ -7,7 +7,7 @@ class Feed extends React.Component {
   componentWillMount() {
     const { staticContext } = this.props;
     if (staticContext) {
-      this.props.onLoad();
+      staticContext.isFinished = this.props.onLoad();
     }
   }
 
@@ -45,9 +45,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onLoad: () => {
-      dispatch(actions.fetchGitHubProfile('lttxzmj'));
-    },
+    onLoad: () => dispatch(actions.fetchGitHubProfile('lttxzmj')),
   };
 }
 

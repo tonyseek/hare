@@ -4,8 +4,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import routes from './views';
-import store from './store';
+import configureStore from './store';
 
+const store = configureStore(
+  typeof window !== 'undefined' && window.__INITIAL_STATE__);
 const AppRouter = () => (
   <Provider store={store}>
     <BrowserRouter>

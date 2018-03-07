@@ -8,21 +8,28 @@ import { renderRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
 import routes from '../public/views';
-import store from '../public/store';
+import configureStore from '../public/store';
 import { API_DOMAIN, API_HTTPS } from '../public/config';
 
 const router = express.Router();
 
 router.get('/*', (req, res) => {
+  const store = configureStore();
   const context = {};
-  const content = renderToString(
+  const content = () => renderToString(
     <Provider store={store}>
       <StaticRouter location={req.originalUrl} context={context}>
         {renderRoutes(routes)}
       </StaticRouter>
     </Provider>
   );
-  res.render('index.html.mustache', { content });
+  content();
+  const isFinished = context.isFinished || Promise.resolve();
+  isFinished.finally(() => {
+    const state = JSON.stringify(store.getState());
+    // render again here
+    res.render('index.html.mustache', { content: content(), state });
+  });
 });
 
 const app = express();
