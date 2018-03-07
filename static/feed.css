@@ -1,0 +1,7 @@
+.feed {
+  overflow: hidden;
+}
+
+.feed__avatar {
+  float: right;
+}

@@ -6,6 +6,13 @@ Yet another front-end project playground.
 
 This is a demo of React.js stack and its server-side rendering.
 
+The project layout is:
+
+- `public` - The universal code in both browser-side and server-side
+- `server` - The server-side code (HTTP server)
+- `static` - The browser-side code (stylesheets and media files)
+- `dist` `views` - The generated files
+
 ## Development
 
 To prepare your environment:
@@ -22,4 +29,4 @@ To start the development server:
 forego start
 ```
 
-Now, open http://127.0.0.1:5300 to view it.
+Now, open http://127.0.0.1:5300 and view it.

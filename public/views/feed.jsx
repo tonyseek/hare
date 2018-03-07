@@ -23,8 +23,10 @@ class Feed extends React.Component {
       <div>
         <h4>hello, feed</h4>
         {state == 'success' ?
-          <div>
-            <img src={userAvatarUrl} width="64" height="64" />
+          <div className="feed">
+            <span className="feed__avatar">
+              <img src={userAvatarUrl} width="64" height="64" />
+            </span>
             <code>@{userId}</code>
           </div> :
           <div>
