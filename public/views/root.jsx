@@ -6,8 +6,12 @@ export default function Root(props) {
   return (
     <div>
       <header>
-        <Link to="/">Home</Link>
-        <Link to="/feed">Feed</Link>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/feed">Feed</Link></li>
+          </ul>
+        </nav>
       </header>
       <main>
         {renderRoutes(props.route.routes)}

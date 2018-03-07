@@ -27,7 +27,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist', 'views']),
+    new CleanWebpackPlugin(['dist/*', 'views/*']),
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, './views/index.html.mustache'),
       template: './public/index.html',
