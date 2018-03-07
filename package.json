@@ -8,7 +8,7 @@
     "build": "webpack --mode ${NODE_ENV:-development}",
     "start:static": "webpack --mode ${NODE_ENV:-development} --watch",
     "start:server": "nodemon -w server -w views -e js,jsx,mustache -x babel-node server/index.jsx",
-    "start:reload": "browser-sync start --no-notify --no-ui --no-open --no-online --reload-delay=1500 --files=views"
+    "start:reload": "browser-sync start --no-ui --no-online --reload-delay=1500 --files=views"
   },
   "author": "Jiangge Zhang",
   "license": "MIT",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "express-http-proxy": "^1.1.0",
     "mustache": "^2.3.0",
     "mustache-express": "^1.2.5",
     "react": "^16.2.0",
