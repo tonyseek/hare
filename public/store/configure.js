@@ -5,7 +5,10 @@ import { DEBUG } from '../config';
 
 function getEnhancer() {
   /* eslint-disable no-underscore-dangle */
-  if (DEBUG && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  if (
+    DEBUG && typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION__
+  ) {
     return window.__REDUX_DEVTOOLS_EXTENSION__();
   }
   /* eslint-enable */

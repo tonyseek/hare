@@ -2,11 +2,13 @@ import path from 'path';
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
 import routes from '../public/views';
+import store from '../public/store';
 import { API_DOMAIN, API_HTTPS } from '../public/config';
 
 const router = express.Router();
@@ -14,9 +16,11 @@ const router = express.Router();
 router.get('/*', (req, res) => {
   const context = {};
   const content = renderToString(
-    <StaticRouter location={req.originalUrl} context={context}>
-      {renderRoutes(routes)}
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={req.originalUrl} context={context}>
+        {renderRoutes(routes)}
+      </StaticRouter>
+    </Provider>
   );
   res.render('index.html.mustache', { content });
 });
