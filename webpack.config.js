@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -27,6 +28,10 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV',
+      'HARE_API_URL',
+    ]),
     new CleanWebpackPlugin(['dist/*', 'views/*']),
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, './views/index.html.mustache'),

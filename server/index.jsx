@@ -7,7 +7,7 @@ import { renderRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
 import routes from '../public/views';
-import { API_DOMAIN, API_HTTPS } from './config';
+import { API_DOMAIN, API_HTTPS } from '../public/config';
 
 const router = express.Router();
 
