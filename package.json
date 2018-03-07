@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode ${NODE_ENV:-development}",
+    "prestart": "npm run build",
     "start": "babel-node server/index.jsx"
   },
   "author": "Jiangge Zhang",

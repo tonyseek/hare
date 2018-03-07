@@ -10,6 +10,5 @@ This is a demo of React.js stack and its server-side rendering.
 
 ```
 npm install
-npm run build
 npm start
 ```

@@ -27,10 +27,10 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist', 'views']),
     new HtmlWebpackPlugin({
-      filename: 'index.html.mustache',
-      template: './public/index.html.mustache',
+      filename: path.resolve(__dirname, './views/index.html.mustache'),
+      template: './public/index.html',
       inject: 'body',
     }),
   ],

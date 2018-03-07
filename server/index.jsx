@@ -16,14 +16,14 @@ router.get('/*', (req, res) => {
       {renderRoutes(routes)}
     </StaticRouter>
   );
-  res.render('../dist/index.html.mustache', { content });
+  res.render('index.html.mustache', { content });
 });
 
 const app = express();
+const port = Number.parseInt(process.env.PORT || '3000');
+
 app.engine('mustache', MustacheEngine());
 app.set('view engine', 'mustache');
-app.use(/\/((?!static).)*/, router);
-app.use('/static', express.static(path.resolve(__dirname, '../dist'), {
-  index: false,
-}));
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.use('/static', express.static(path.resolve(__dirname, '../dist')));
+app.use('*', router);
+app.listen(port, () => console.log(`Open http://127.0.0.1:${port}`));
