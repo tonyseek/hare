@@ -2,19 +2,19 @@
   "name": "hare",
   "version": "1.0.0",
   "description": "Yet another front-end project playground",
-  "main": "server/index.js",
   "files": [
-      "public/**/*.+(js|jsx)",
-      "server/**/*.+(js|jsx)",
-      "static/**/*.+(css|png|svg|jpg|gif)",
-      "views/*.+(html|mustache)",
-      "dist/*.+(js|css|map)"
+    "npm-shrinkwrap.json",
+    "public/**/*.+(js|jsx)",
+    "server/**/*.+(js|jsx)",
+    "views/*.+(html|mustache)",
+    "dist/*.+(map|js|css|png|svg|jpg|gif)"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "prepack": "webpack",
-    "start": "babel-node server/index.jsx",
+    "postpack": "tar -zxvf ${npm_package_name}-${npm_package_version}.tgz && babel -s true -d package --only 'package/+(public|server)' package && find package -type f -name '*.jsx' -delete && tar -zcvf ${npm_package_name}-${npm_package_version}.tgz package && rm -rf package",
+    "start": "node server/index.js",
     "start:static": "webpack --watch",
     "start:server": "nodemon -w server -w views -e js,jsx,mustache -x babel-node server/index.jsx",
     "start:reload": "browser-sync start --no-ui --no-online --reload-delay=1500 --files=views"
@@ -41,6 +41,7 @@
     "webpack-cli": "^2.0.10"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "express": "^4.16.2",
     "express-http-proxy": "^1.1.0",
     "isomorphic-fetch": "^2.2.1",

@@ -8,6 +8,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
     index: [
+      'babel-polyfill',
       './public/index.jsx',
       './static/index.css',
     ],
