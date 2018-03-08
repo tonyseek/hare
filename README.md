@@ -16,7 +16,7 @@ The Redux components (reducers, actions and also) are all in the `public`.
 
 ## Development
 
-To prepare your environment:
+### Installation
 
 ```
 brew bundle # if you are using macOS and Homebrew
@@ -24,10 +24,22 @@ npm install
 cp .env.example .env
 ```
 
-To start the development server:
+### Running
 
 ```
 forego start
 ```
 
-Now, open http://127.0.0.1:5300 and view it.
+There are two servers in the development environment:
+
+- `http://127.0.0.1:5000` is the original server with server-side rendering
+- `http://127.0.0.1:5300` is a browser-sync proxy for refreshing your browsers
+
+## Deployment
+
+Using `npm pack` to compile and archive a release package (e.g.
+`hare-1.0.0.tar.gz`).
+
+```
+forego run npm pack
+```

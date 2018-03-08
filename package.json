@@ -2,10 +2,19 @@
   "name": "hare",
   "version": "1.0.0",
   "description": "Yet another front-end project playground",
-  "main": "index.js",
+  "main": "server/index.js",
+  "files": [
+      "public/**/*.+(js|jsx)",
+      "server/**/*.+(js|jsx)",
+      "static/**/*.+(css|png|svg|jpg|gif)",
+      "views/*.+(html|mustache)",
+      "dist/*.+(js|css|map)"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode ${NODE_ENV:-development}",
+    "prepack": "webpack --mode production",
+    "start": "babel-node server/index.jsx",
     "start:static": "webpack --mode ${NODE_ENV:-development} --watch",
     "start:server": "nodemon -w server -w views -e js,jsx,mustache -x babel-node server/index.jsx",
     "start:reload": "browser-sync start --no-ui --no-online --reload-delay=1500 --files=views"
