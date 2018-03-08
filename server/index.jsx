@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import path from 'path';
 import express from 'express';
+import morgan from 'morgan';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -10,7 +11,7 @@ import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
 import routes from '../public/views';
 import configureStore from '../public/store';
-import { API_DOMAIN, API_HTTPS } from '../public/config';
+import { LOG_FORMAT, API_DOMAIN, API_HTTPS } from '../public/config';
 
 const router = express.Router();
 
@@ -38,6 +39,7 @@ const port = Number.parseInt(process.env.PORT || '3000');
 
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
+app.use(morgan(LOG_FORMAT));
 app.use('/static', express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', proxy(API_DOMAIN, { https: API_HTTPS }));
 app.use('*', router);
