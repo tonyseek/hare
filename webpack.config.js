@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'production',
   entry: {
     index: [
       './public/index.jsx',
@@ -41,6 +42,18 @@ module.exports = {
         use: ['file-loader'],
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /\/node_modules\//,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
   },
   devtool: 'source-map',
   plugins: [

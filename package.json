@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode ${NODE_ENV:-development}",
-    "prepack": "webpack --mode production",
+    "build": "webpack",
+    "prepack": "webpack",
     "start": "babel-node server/index.jsx",
-    "start:static": "webpack --mode ${NODE_ENV:-development} --watch",
+    "start:static": "webpack --watch",
     "start:server": "nodemon -w server -w views -e js,jsx,mustache -x babel-node server/index.jsx",
     "start:reload": "browser-sync start --no-ui --no-online --reload-delay=1500 --files=views"
   },
