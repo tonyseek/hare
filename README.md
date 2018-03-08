@@ -1,17 +1,18 @@
 # Hare
 
-Yet another front-end project playground.
+Yet another front-end project boilerplate.
 
 ## Introduction
 
-This is a demo of React.js stack and its server-side rendering.
-
-The project layout is:
+This project uses React.js stack and its server-side rendering. The file layout
+is:
 
 - `public` - The universal code in both browser-side and server-side
 - `server` - The server-side code (HTTP server)
 - `static` - The browser-side code (stylesheets and media files)
 - `dist` `views` - The generated files
+
+The Redux components (reducers, actions and also) are all in the `public`.
 
 ## Development
 
