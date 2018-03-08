@@ -1,12 +1,16 @@
 import fetch from 'isomorphic-fetch';
-import * as config from '../config';
+import { API_URL } from '../config';
+import { makeUrl } from '../utility';
 import * as types from './constants';
 
+
 export function fetchGitHubProfile(userId) {
+  const profileUrl = makeUrl(API_URL, `users/${userId}`);
+
   return (dispatch) => {
     dispatch({ type: types.FETCH_GITHUB_PROFILE_REQUEST, userId });
 
-    return fetch(`${config.API_URL}/users/${userId}`).then((response) => {
+    return fetch(profileUrl).then((response) => {
       if (response.ok) {
         return response.json().then((data) => {
           const userAvatarUrl = data.avatar_url;
