@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name]-[hash:6].js',
-    publicPath: '/static',
+    publicPath: '/static/',
   },
   resolve: {
     modules: [
