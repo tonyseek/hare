@@ -7,6 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import serialize from 'serialize-javascript';
 import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
 import routes from '../public/views';
@@ -28,7 +29,7 @@ router.get('/*', (req, res) => {
   content();
   const isFinished = context.isFinished || Promise.resolve();
   isFinished.finally(() => {
-    const state = JSON.stringify(store.getState());
+    const state = serialize(store.getState(), { isJSON: true });
     // render again here
     res.render('index.html.mustache', { content: content(), state });
   });

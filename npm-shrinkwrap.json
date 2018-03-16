@@ -11701,8 +11701,7 @@
     "serialize-javascript": {
       "version": "1.4.0",
       "resolved": "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-1.4.0.tgz",
-      "integrity": "sha1-fJWFFNtqwkQ6irwGLcn3iGp/YAU=",
-      "dev": true
+      "integrity": "sha1-fJWFFNtqwkQ6irwGLcn3iGp/YAU="
     },
     "serve-index": {
       "version": "1.8.0",
