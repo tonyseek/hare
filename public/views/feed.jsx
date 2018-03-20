@@ -1,9 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetch from 'isomorphic-fetch';
 import * as actions from '../actions';
 
 class Feed extends React.Component {
+  static propTypes = {
+    staticContext: PropTypes.object,
+    userId: PropTypes.string,
+    userAvatarUrl: PropTypes.string,
+    state: PropTypes.string.isRequired,
+    onLoad: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    staticContext: null,
+    userId: null,
+    userAvatarUrl: null,
+  };
+
   componentWillMount() {
     const { staticContext } = this.props;
     if (staticContext) {

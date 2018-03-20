@@ -1,4 +1,4 @@
 {
-  "presets": ["env", "react"],
+  "presets": ["env", "stage-1", "react"],
   "compact": false
 }
