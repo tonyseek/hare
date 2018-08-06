@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "prepack": "webpack",
-    "postpack": "tar -zxvf ${npm_package_name}-${npm_package_version}.tgz && babel -s true -d package --only 'package/+(public|server)' package && find package -type f -name '*.jsx' -delete && tar -zcvf ${npm_package_name}-${npm_package_version}.tgz package && rm -rf package",
+    "postpack": "echo \"tar -zxvf ${npm_package_name}-${npm_package_version}.tgz && $(command -v babel) -s true -d package --only 'package/+(public|server)' package && find package -type f -name '*.jsx' -delete && tar -zcvf ${npm_package_name}-${npm_package_version}.tgz package && rm -rf package && rm -rf postpack.sh\" | tee postpack.sh",
     "start": "node server/index.js",
     "start:static": "webpack --watch",
     "start:server": "nodemon -w server -w views -e js,jsx,mustache -x babel-node server/index.jsx",

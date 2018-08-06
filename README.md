@@ -42,4 +42,5 @@ Using `npm pack` to compile and archive a release package (e.g.
 
 ```
 forego run npm pack
+forego run sh ./postpack.sh
 ```
