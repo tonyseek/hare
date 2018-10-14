@@ -1,4 +1,13 @@
 {
-  "presets": ["env", "stage-1", "react"],
-  "compact": false
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "compact": false,
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-json-strings",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-export-default-from"
+  ]
 }

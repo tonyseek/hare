@@ -8,7 +8,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
     index: [
-      'babel-polyfill',
+      '@babel/polyfill',
       './public/index.jsx',
       './static/index.css',
     ],
@@ -69,7 +69,7 @@ module.exports = {
       inject: 'body',
     }),
     new ExtractTextPlugin({
-      filename: '[name]-[contenthash:6].css',
+      filename: '[name]-[md5:contenthash:hex:6].css',
       disable: false,
       allChunks: true,
     }),
