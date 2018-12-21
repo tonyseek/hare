@@ -39,7 +39,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "nodemon": "^1.18.4",
+    "nodemon": "^1.18.9",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.1.1",
     "style-loader": "^0.23.1",
