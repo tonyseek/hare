@@ -5,6 +5,7 @@
   ],
   "compact": false,
   "plugins": [
+    "css-modules-transform",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-json-strings",
     "@babel/plugin-proposal-export-namespace-from",
