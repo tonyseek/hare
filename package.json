@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@sentry/node": "^4.6.4",
     "core-js": "^2.6.5",
     "express": "^4.16.4",
     "express-http-proxy": "^1.5.1",

@@ -10,9 +10,17 @@ import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import proxy from 'express-http-proxy';
 import mustache from 'mustache-express';
+import * as sentry from '@sentry/node';
 import routes from '../public/views';
 import configureStore from '../public/store';
-import { LOG_FORMAT, API_DOMAIN, API_HTTPS } from '../public/config';
+import {
+  LOG_FORMAT,
+  SENTRY_DSN,
+  API_DOMAIN,
+  API_HTTPS,
+} from '../public/config';
+
+sentry.init({ dsn: SENTRY_DSN });
 
 const router = express.Router();
 
@@ -37,6 +45,19 @@ router.get('/*', (req, res) => {
 
 const app = express();
 const port = Number.parseInt(process.env.PORT || '3000');
+
+// The request handler must be the first middleware on the app
+app.use(sentry.Handlers.requestHandler());
+
+// The error handler must be before any other error middleware
+app.use(sentry.Handlers.errorHandler());
+
+app.use(function onError(err, req, res, next) {
+  // The error id is attached to `res.sentry` to be returned
+  // and optionally displayed to the user for support.
+  res.statusCode = 500;
+  res.end(res.sentry + '\n');
+});
 
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
